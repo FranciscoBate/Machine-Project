@@ -1,275 +1,427 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package machince.project.lassalle;
+package basicprog;
 
+import java.io.*;
 /**
  *
- * @author master
+ * @author Administrator
  */
- import java.util.Scanner;    /** this code lets us capture the users input*/
-public class MachinceProjectLassalle {
+import java.util.Scanner;
+public class BasicProg {
 
     /**
      * @param args the command line arguments
-     * 
-     * 
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-   
-    float UinputIncome; /** functions as the input of user  by default 0*/
-    float SSS =0;/** shows the user how much they give to SSS */
-    float Philhealth , love; /** shows the user how much they give to Philhealth */
-    float UserIncome; /** shows the income after computation */
-    
-   System.out.println("Enter your income ");
-   Scanner scanner = new Scanner(System.in); /** functions as the way to get the keyboard */
+     
+   public static void main(String[] args) {
         
-    UinputIncome = scanner.nextFloat();     
+      float  c_Yearlyincome,YearlyDeductibles,Yearlyincome,MonthlyDeductibles, UinputIncome ,SSS =0,GSIS =0 ,Philhealth,taxcomputation , love,Yearlytaxammount,Monthlytaxammount ,o_Monthlytaxammount,o_oldYearlytaxammount,montlyIncome,c_montlyIncome,Dependents;
     
-        if(UinputIncome < 0) /*  Checks userinput if  negative**/
-          {
-              System.out.println("Invalid Input");
-             
-             }
-        
-        else if (UinputIncome > 0 &&UinputIncome <= 250000 )  /*  Checks userinput if it applies to this condition in the tran law**/
-            {
-                
-                UserIncome = UinputIncome;           
-                System.out.println("Your entered ammount"+ UinputIncome);
-                Philhealth = 0;
-                SSS = 0;
-                
-                
-                /** Phil health CHecker */
+     /** Variables Guide
+     * UinputIncome the variable that is used to collect the input of the user is also a back up constant 
+     * c_Yearlyincome act as  the constant for the yearly
+     * Yearlyincome is the one that can be modified
+     * c_montlyIncome act as the constant for the monthly income
+     * montlyIncome is the one that can be modified 
+     * YearlyDeductiblessis the  total of  Deductibles for the year
+     * MonthlyDeductibles is the  total of  Deductibles for the month
+     * taxcomputation
+     * SSS  Deductibles for SSS
+     * GSIS Deductibles for government worker
+     * Philhealth  Deductible for Philhealth
+     * love is the Deductible for pagibig
+     * Yearlytaxammount how much the user is paying on taxes for the year currently
+     * Monthlytaxammount how much the user is  paying on taxes for the month currently
+     * 
+     */ 
+        UinputIncome = 0;
+        Yearlyincome= 0;
+        MonthlyDeductibles= 0;
+        YearlyDeductibles= 0; 
+        c_Yearlyincome = 0;
+        c_montlyIncome =0;
+        System.out.println("Enter your monthly Income ");
+        BufferedReader br2 = new BufferedReader (new InputStreamReader (System.in));
+                  try{
+                  UinputIncome =  Float.parseFloat(br2.readLine()) ;
+                  c_montlyIncome = UinputIncome ; 
+                  montlyIncome =c_montlyIncome;
+                  c_Yearlyincome = UinputIncome *12;
+                  Yearlyincome = c_Yearlyincome;
+                  
+                  }
+                  catch(Exception e){
+                      System.out.println("Error Invalid Value ");
+                      montlyIncome = 1;
+                   
+                  }
+       /**  UinputIncome = scanner.nextFloat();     */
+    
+            if(UinputIncome < 0) /*  Checks userinput if  negative**/
+              {
+                  System.out.println("Negative Value Detected");
 
-                if (UinputIncome <= 10000)
-                {
-                   Philhealth = (float)137.50;
-                   UserIncome = UserIncome - Philhealth;  
-                }
-                else if (UinputIncome > 10000 && UinputIncome <=39999.99)
-                {
-                   Philhealth = (float)(UinputIncome * 0.0275)/2;
-                   UserIncome = UserIncome - Philhealth;  
-                }
-                 else if (UinputIncome >= 40000)
-                 {
-                  Philhealth = 550;
-                  UserIncome = UserIncome - Philhealth;
                  }
-               
-                 /** 
-                 * 
-                 * SSS Contribution Checker based on income
 
-                 */
-                if (UinputIncome >= 1000 && UinputIncome <= 1249.99)
-                        {
+            else if (c_Yearlyincome > 0 &&c_Yearlyincome <= 250000 )  /*  Checks userinput if it applies to this condition in the tran law**/
+                {
+                    Philhealth = 0;
+                    Monthlytaxammount = 0;
+                    SSS = 0;
+                    love = 100; /** pagibig is constant 100 based on  other calculators */
+                   
 
-                            SSS = (float) 36.30;
-                            UserIncome = UserIncome - SSS;  
-                          }
+                    /** Phil health CHecker */
 
-                else if (UinputIncome >= 1250 && UinputIncome <= 1749.99)
-                        {
+                    if (c_montlyIncome <= 10000)
+                    {
+                       Philhealth = 137.50f;
+                       
+                    }
+                    else if (c_montlyIncome > 10000 && c_montlyIncome <=39999.99)
+                    {
+                       Philhealth = (float)(c_montlyIncome * 0.0275)/2;
+                      
+                    }
+                     else if (c_montlyIncome >= 40000)
+                     {
+                      Philhealth = 550f;
+                     }
 
-                            SSS = (float)54.50;
-                            UserIncome = UserIncome - SSS;   
-                          }
-                else if (UinputIncome >= 1750 && UinputIncome <= 2249.99)
-                        {
+                     /** 
+                     * 
+                     * SSS Contribution Checker based on income
 
-                            SSS = (float)72.70;
-                            UserIncome = UserIncome - SSS;  
-                          }
-                else if (UinputIncome >= 2250 && UinputIncome <= 2749.99)
-                        {
+                     */
+                    if (c_montlyIncome >= 1000 && c_montlyIncome <= 1249.99)
+                            {
 
-                            SSS =(float) 90.80;
-                            UserIncome = UserIncome - SSS;  
-                          }
+                                SSS =  36.30f;
+                                  
+                              }
 
-                else if (UinputIncome >= 2750 && UinputIncome <= 3249.99)
-                        {
+                    else if (c_montlyIncome >= 1250 && c_montlyIncome <= 1749.99)
+                            {
 
-                            SSS = (float)109.00;
-                            UserIncome = UserIncome - SSS;  
-                          }
+                                SSS = 54.50f;
+                                   
+                              }
+                    else if (c_montlyIncome >= 1750 && c_montlyIncome <= 2249.99)
+                            {
 
-                else if (UinputIncome >= 3250 && UinputIncome <= 3749.99)
-                        {
+                                SSS = 72.70f;
+                                 
+                              }
+                    else if (c_montlyIncome >= 2250 && c_montlyIncome <= 2749.99)
+                            {
 
-                            SSS = (float)127.20;
-                            UserIncome = UserIncome - SSS;   
-                          }
-                else if (UinputIncome >= 3750 && UinputIncome <= 4249.99)
-                        {
+                                SSS = 90.80f;
+                                
+                              }
 
-                            SSS = (float)145.30;
-                            UserIncome = UserIncome - SSS;  
-                          }
+                    else if (c_montlyIncome >= 2750 && c_montlyIncome <= 3249.99)
+                            {
 
-                else if (UinputIncome >= 4250 && UinputIncome <= 4749.99)
-                        {
+                                SSS = 109.00f;
+                                
+                              }
 
-                            SSS = (float)163.50;
-                            UserIncome = UserIncome - SSS;  
-                          }
-                else if (UinputIncome >= 4750 && UinputIncome <= 5249.99)
-                        {
+                    else if (c_montlyIncome >= 3250 && c_montlyIncome <= 3749.99)
+                            {
 
-                            SSS = (float)181.70;
-                            UserIncome = UserIncome - SSS;  
-                          }
+                                SSS = 127.20f;
+                                 
+                              }
+                    else if (c_montlyIncome >= 3750 && c_montlyIncome <= 4249.99)
+                            {
 
-                else if (UinputIncome >= 5250 && UinputIncome <= 5749.99)
-                        {
+                                SSS = 145.30f;
+                                
+                              }
 
-                            SSS = (float)199.80;
-                            UserIncome = UserIncome - SSS;  
-                          }
-                else if (UinputIncome >= 5750 && UinputIncome <= 6249.99)
-                        {
+                    else if (c_montlyIncome >= 4250 && c_montlyIncome <= 4749.99)
+                            {
 
-                            SSS = (float)218.00;
-                            UserIncome = UserIncome - SSS;  
-                          }
-                else if (UinputIncome >= 6250 && UinputIncome <= 6749.99)
-                        {
+                                SSS = 163.50f;
+                               
+                              }
+                    else if (c_montlyIncome >= 4750 && c_montlyIncome <= 5249.99)
+                            {
 
-                            SSS = (float)218.00;
-                            UserIncome = UserIncome - SSS;  
-                          }
-                else if (UinputIncome >= 6750 && UinputIncome <= 7249.99)
-                        {
+                                SSS = 181.70f;
+                                
+                              }
 
-                            SSS = (float)254.30;
-                            UserIncome = UserIncome - SSS;  
-                          }
-                else if (UinputIncome >= 7250 && UinputIncome <= 7749.99)
-                        {
+                    else if (c_montlyIncome >= 5250 && c_montlyIncome <= 5749.99)
+                            {
 
-                            SSS = (float)272.50;
-                            UserIncome = UserIncome - SSS;  
-                          }  
-                else if (UinputIncome >= 7750 && UinputIncome <= 8249.99)
-                        {
+                                SSS = 199.80f;
+                              
+                              }
+                    else if (c_montlyIncome >= 5750 && c_montlyIncome <= 6249.99)
+                            {
 
-                            SSS = (float)290.70;
-                            UserIncome = UserIncome - SSS;  
-                          }  
+                                SSS = 218.00f;
+                                 
+                              }
+                    else if (c_montlyIncome >= 6250 && c_montlyIncome <= 6749.99)
+                            {
 
-                else if (UinputIncome >= 8250 && UinputIncome <= 8749.99)
-                        {
+                                SSS = 218.00f;
+                                 
+                              }
+                    else if (c_montlyIncome >= 6750 && c_montlyIncome <= 7249.99)
+                            {
 
-                            SSS = (float)308.80;
-                            UserIncome = UserIncome - SSS;  
-                          }  
-                else if (UinputIncome >= 8750 && UinputIncome <= 9249.99)
-                        {
+                                SSS = 254.30f;
+                                
+                              }
+                    else if (c_montlyIncome >= 7250 && c_montlyIncome <= 7749.99)
+                            {
 
-                            SSS = (float)327.00;
-                            UserIncome = UserIncome - SSS;  
-                          }  
-                else if (UinputIncome >= 9250 && UinputIncome <= 9749.99)
-                        {
+                                SSS = 272.50f;
+                               
+                              }  
+                    else if (c_montlyIncome >= 7750 && c_montlyIncome <= 8249.99)
+                            {
 
-                            SSS = (float)345.20;
-                            UserIncome = UserIncome - SSS;  
-                          }  
-                else if (UinputIncome >= 9750 && UinputIncome <= 10249.99)
-                        {
+                                SSS = 290.70f;
+                                
+                              }  
 
-                            SSS = (float)363.30;
-                            UserIncome = UserIncome - SSS;  
-                        }
-                else if (UinputIncome >= 10250 && UinputIncome <= 10749.99)
-                        {
+                    else if (c_montlyIncome >= 8250 && c_montlyIncome <= 8749.99)
+                            {
 
-                            SSS = (float)381.50;
-                            UserIncome = UserIncome - SSS;  
-                        }      
+                                SSS = 308.80f;
+                               
+                              }  
+                    else if (c_montlyIncome >= 8750 && c_montlyIncome <= 9249.99)
+                            {
 
-                else if (UinputIncome >= 10750 && UinputIncome <= 11249.99)
-                        {
+                                SSS = 327.00f;
+                                 
+                              }  
+                    else if (c_montlyIncome >= 9250 && c_montlyIncome <= 9749.99)
+                            {
 
-                            SSS = (float)399.70;
-                            UserIncome = UserIncome - SSS;  
-                        }              
-                else if (UinputIncome >= 11250 && UinputIncome <= 11749.99)
-                        {
+                                SSS = 345.20f;
+                                 
+                              }  
+                    else if (c_montlyIncome >= 9750 && c_montlyIncome <= 10249.99)
+                            {
 
-                            SSS = (float)417.80;
-                            UserIncome = UserIncome - SSS;  
-                        }             
-                else if (UinputIncome >= 11750 && UinputIncome <= 12249.99)
-                        {
+                                SSS = 363.30f;
+                                  
+                            }
+                    else if (c_montlyIncome >= 10250 && c_montlyIncome <= 10749.99)
+                            {
 
-                            SSS = (float)436.00;
-                            UserIncome = UserIncome - SSS;  
-                        }  
-                else if (UinputIncome >= 12250 && UinputIncome <= 12749.99)
-                        {
+                                SSS = 381.50f;
+                                
+                            }      
 
-                            SSS = (float)454.20;
-                            UserIncome = UserIncome - SSS;  
-                        }    
-                else if (UinputIncome >= 12750 && UinputIncome <= 13249.99)
-                        {
+                    else if (c_montlyIncome >= 10750 && c_montlyIncome <= 11249.99)
+                            {
 
-                            SSS = (float)472.30;
-                            UserIncome = UserIncome - SSS;  
-                        }        
-                else if (UinputIncome >= 13250 && UinputIncome <= 13749.99)
-                        {
+                                SSS = 399.70f;
+                               
+                            }              
+                    else if (c_montlyIncome >= 11250 && c_montlyIncome <= 11749.99)
+                            {
 
-                            SSS = (float)490.50;
-                            UserIncome = UserIncome - SSS;  
-                        }     
-                else if (UinputIncome >= 13750 && UinputIncome <= 14249.99)
-                        {
+                                SSS = 417.80f;
+                                
+                            }             
+                    else if (c_montlyIncome >= 11750 && c_montlyIncome <= 12249.99)
+                            {
 
-                            SSS = (float)508.70;
-                            UserIncome = UserIncome - SSS;  
-                        } 
-                else if (UinputIncome >= 14250 && UinputIncome <= 14749.99)
-                        {
+                                SSS = 436.00f;
+                                 
+                            }  
+                    else if (c_montlyIncome >= 12250 && c_montlyIncome <= 12749.99)
+                            {
 
-                            SSS = (float)526.80;
-                            UserIncome = UserIncome - SSS;  
-                        }    
-                else if (UinputIncome >= 14750 && UinputIncome <= 15249.99)
-                        {
+                                SSS = 454.20f;
+                                
+                            }    
+                    else if (c_montlyIncome >= 12750 && c_montlyIncome <= 13249.99)
+                            {
 
-                            SSS = (float)545.00;
-                            UserIncome = UserIncome - SSS;  
-                        } 
-                else if (UinputIncome >= 15750 )
-                        {
+                                SSS = 472.30f;
+                                 
+                            }        
+                    else if (c_montlyIncome >= 13250 && c_montlyIncome <= 13749.99)
+                            {
 
-                            SSS = (float)581.30;
-                            UserIncome = UserIncome - SSS;  
-                        }       
-                /** Not Done */
+                                SSS = 490.50f;
+                                
+                            }     
+                    else if (c_montlyIncome >= 13750 && c_montlyIncome <= 14249.99)
+                            {
 
-                System.out.println("Your Take Home Income "+ UserIncome);
-                System.out.println("Your SSS Payment "+ SSS);
-                System.out.println("Your PhilHealth Payment "+ Philhealth);
-                
-                
-            }
-        
-        else if ( UinputIncome == 0)/*  Checks userinput if zero**/
-            {
-                
-                System.out.println("You make no money sad"); /* Temporary**/
-            
-              }
+                                SSS = 508.70f;
+                                
+                            } 
+                    else if (c_montlyIncome >= 14250 && c_montlyIncome <= 14749.99)
+                            {
+
+                                SSS = 526.80f;
+                                
+                            }    
+                    else if (c_montlyIncome >= 14750 && c_montlyIncome <= 15249.99)
+                            {
+
+                                SSS = 545.00f;
+                                
+                            } 
+                    else if (c_montlyIncome >= 15250 && c_montlyIncome <= 15749.99)
+                            {
+                                SSS = 563.20f;
+                                
+                            }                            
+                    else if (c_montlyIncome >= 15750 )
+                            {
+
+                                SSS = 581.30f;
+                                
+                            }       
+                    /** Not Done */
+                   montlyIncome = montlyIncome - love;
+                   montlyIncome = montlyIncome - SSS;
+                   
+                   montlyIncome = montlyIncome - Philhealth;
+                   
+                   MonthlyDeductibles = SSS +Philhealth + love;
+                   YearlyDeductibles = MonthlyDeductibles *12 ;
+                   Yearlyincome = Yearlyincome - YearlyDeductibles;
+                   System.out.println("Your Take Home Income Per Month  "+ montlyIncome);
+                   System.out.println("Your Take Home Income Per Year  "+ Yearlyincome);
+                   System.out.println("Your SSS Payment "+ SSS);
+                   System.out.println("Your PhilHealth Payment "+ Philhealth);  
+                   System.out.println("Your Pag-ibig Payment "+ love);
+                   System.out.println("Your total deductibels per month  "+ MonthlyDeductibles);
+                   System.out.println("Your total deductibels per year "+ YearlyDeductibles);
+                    
+
+    
+                }
+            else if ( Yearlyincome  >250000.00 && Yearlyincome <= 400000)
+                {
+                    Monthlytaxammount = 0;
+                    SSS = (float)581.30f; 
+                    love = (float)100f; 
+                    Philhealth =0;
+                    if (c_montlyIncome > 10000 && c_montlyIncome <=39999.99)
+                    {
+                       Philhealth = (float)(c_montlyIncome * 0.0275)/2;
+                      
+                    }
+                    else if (c_montlyIncome >= 40000)
+                    {
+                      Philhealth = 550f;
+                    }
+                    montlyIncome = (float)montlyIncome - SSS - love - Philhealth ;
+                    taxcomputation = (float)montlyIncome - (250000/12);
+                   
+                    if (taxcomputation > 0)
+                    {
+                    Monthlytaxammount = taxcomputation * 0.20f;
+                    }
+                    else
+                    {
+                        Monthlytaxammount = 0;
+                    }
+                    
+                    montlyIncome= montlyIncome - Monthlytaxammount;
+                    MonthlyDeductibles = SSS +Philhealth + love;
+                   
+                    YearlyDeductibles = MonthlyDeductibles *12 ;
+                    Yearlyincome = Yearlyincome-  YearlyDeductibles;
+             
+                    
+                    
+                    System.out.println("Your Take Home Income "+ montlyIncome);
+                    System.out.println("Your Take Home Yeearly Income "+ Yearlyincome);
+                    System.out.println("Your SSS Payment "+ SSS);
+                    System.out.println("Your PhilHealth Payment "+ Philhealth);
+                    System.out.println("Your Pag-ibig Payment "+ love);
+                    System.out.println("Your total deductibels per month  "+ MonthlyDeductibles);
+                    System.out.println("Your total deductibels per year "+ YearlyDeductibles);
+                    System.out.println("Your monthly tax payments "+ Monthlytaxammount);
+                    
+
+                }
+             else if ( Yearlyincome  >400000.00 && Yearlyincome <= 800000)
+                {
+                  Monthlytaxammount = 0;
+                    SSS = 581.30f; /** fixed ammount if above 15750*/
+                    love = 100.0f; /** pag ibig is fixed to 100 pesos*/
+                    Philhealth = 0;
+                    if (c_montlyIncome > 10000 && c_montlyIncome <=39999.99)
+                    {
+                       Philhealth = (float)(c_montlyIncome * 0.025)/2;
+                      
+                    }
+                    else if (c_montlyIncome >= 40000)
+                    {
+                      Philhealth = 550f;
+                    }
+                    montlyIncome = (float)montlyIncome - SSS - love - Philhealth;
+                    taxcomputation = (float)montlyIncome - (400000/12);
+                   
+                    Monthlytaxammount = (float)(montlyIncome * 0.25)+30000;
+                     
+                     
+                     if (taxcomputation > 0)
+                    {
+                    Monthlytaxammount = taxcomputation * 0.25f +30000;
+                    }
+                    else
+                    {
+                        Monthlytaxammount = 30000;
+                    }
+                    
+                   YearlyDeductibles = MonthlyDeductibles *12 ;
+                    Yearlyincome = Yearlyincome-  YearlyDeductibles;
+          
+                    System.out.println("Your Take Home Income "+ montlyIncome);
+                    System.out.println("Your Take Home Yeearly Income "+ Yearlyincome);
+                    System.out.println("Your SSS Payment "+ SSS);
+                    System.out.println("Your PhilHealth Payment "+ Philhealth);
+                    System.out.println("Your Pag-ibig Payment "+ love);
+                    System.out.println("Your total deductibels per month  "+ MonthlyDeductibles);
+                    System.out.println("Your total deductibels per year "+ YearlyDeductibles);
+                    System.out.println("Your monthly tax payments "+ Monthlytaxammount);
+                    
+                }
+              else if ( Yearlyincome  >800000.00 && Yearlyincome <= 2000000)
+                {
+                  Monthlytaxammount = 0;
+                    montlyIncome = UinputIncome;
+                    SSS = 581.30f; /** fixed ammount if above 15750*/
+                    love = 100.0f; /** pag ibig is fixed to 100 pesos*/
+                    Philhealth = 550.0f;
+                    Monthlytaxammount = (float)(montlyIncome * 0.30)+13000;
+                    montlyIncome = (float)montlyIncome - SSS - love - Philhealth - Monthlytaxammount;
+
+                    System.out.println("Your Take Home Income "+ montlyIncome);
+                    System.out.println("Your tax payments "+ Monthlytaxammount);
+                    System.out.println("Your SSS Payment "+ SSS);
+                    System.out.println("Your PhilHealth Payment "+ Philhealth);
+                    System.out.println("Your Pag-ibig Payment "+ love);
+                    
+                }
+
+            else if ( montlyIncome == 0)/*  Checks userinput if zero**/
+                {
+
+                    System.out.println("Your too low"); /* Temporary**/
+
+                  }
     }
     
 }
