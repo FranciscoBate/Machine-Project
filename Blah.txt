@@ -49,6 +49,8 @@ public class MachinceProjectLassalle {
         SSS = 0;
         Yearlytaxammount = 0;
         taxcomputation =0;
+        
+      // this line of code gets the user input and checks if it is a vaild input
         System.out.println("Enter your monthly Income ");
         BufferedReader br2 = new BufferedReader (new InputStreamReader (System.in));
                   try{
@@ -63,37 +65,27 @@ public class MachinceProjectLassalle {
                       montlyIncome = 1;
                    
                   }
-              
-            if(c_montlyIncome < 0) /*  Checks userinput if  negative**/
-              {
+     // checks if the user inputed a negative or less than zero value
+            if(c_montlyIncome < 0) 
                   System.out.println("Error Invalid Value");
-
-                 }
-            else if ( montlyIncome == 0)/*  Checks userinput if zero**/
-                {
-
-                    System.out.println("Your Input is too low"); /* Temporary**/
-
-                  }
+                  
+            else if ( montlyIncome == 0)
+                    System.out.println("Your Input is too low"); 
           
             love = 100; /** pagibig is constant 100 based on  other tax calculators */
             
            /** Phil health CHecker */
-            if (c_montlyIncome <= 10000)
+               if (c_montlyIncome <= 10000)
                        Philhealth = 137.50f;
                        
-            else if (c_montlyIncome > 10000 && c_montlyIncome <=39999.99)
+               else if (c_montlyIncome > 10000 && c_montlyIncome <=39999.99)
                      Philhealth = (float)(c_montlyIncome * 0.0275)/2;
             
-           else if (c_montlyIncome >= 40000)
+               else if (c_montlyIncome >= 40000)
                       Philhealth = 550f;
 
-            /** 
-              
-             SSS Contribution Checker based on income
-
-             */
-             if (c_montlyIncome >= 1000 && c_montlyIncome <= 1249.99)
+           
+            if (c_montlyIncome >= 1000 && c_montlyIncome <= 1249.99)
                                  SSS =  36.30f;
 
              else if (c_montlyIncome >= 1250 && c_montlyIncome <= 1749.99)
