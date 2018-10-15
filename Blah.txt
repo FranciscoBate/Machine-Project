@@ -20,10 +20,9 @@ public class MachinceProjectLassalle {
      */
     public static void main(String[] args) {
         
-     float  c_Yearlyincome,YearlyDeductibles,Yearlyincome,MonthlyDeductibles, UinputIncome ,SSS =0,GSIS =0 ,Philhealth,taxcomputation , love,Yearlytaxammount,Monthlytaxammount ,o_Monthlytaxammount,o_oldYearlytaxammount,montlyIncome,c_montlyIncome,Dependents;
+     float  c_Yearlyincome,YearlyDeductibles,Yearlyincome,MonthlyDeductibles ,SSS =0,GSIS =0 ,Philhealth,taxcomputation , love,Yearlytaxammount,Monthlytaxammount ,o_Monthlytaxammount,o_oldYearlytaxammount,montlyIncome,c_montlyIncome,Dependents;
     
      /** Variables Guide
-     * UinputIncome the variable that is used to collect the input of the user is also a back up constant 
      * c_Yearlyincome act as  the constant for the yearly
      * Yearlyincome is the one that can be modified
      * c_montlyIncome act as the constant for the monthly income
@@ -40,7 +39,6 @@ public class MachinceProjectLassalle {
      * 
      */ 
       // only declared values as zero here since netbeans requires it
-        UinputIncome = 0;
         Yearlyincome= 0;
         MonthlyDeductibles= 0;
         YearlyDeductibles= 0; 
@@ -54,10 +52,9 @@ public class MachinceProjectLassalle {
         System.out.println("Enter your monthly Income ");
         BufferedReader br2 = new BufferedReader (new InputStreamReader (System.in));
                   try{
-                  UinputIncome =  Float.parseFloat(br2.readLine()) ;
-                  c_montlyIncome = UinputIncome ; 
+                  c_montlyIncome = Float.parseFloat(br2.readLine()) ; 
                   montlyIncome =c_montlyIncome;
-                  c_Yearlyincome = UinputIncome *12;
+                  c_Yearlyincome = c_montlyIncome *12;
                   Yearlyincome = c_Yearlyincome;
                   
                   }
