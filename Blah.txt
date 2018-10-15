@@ -1,0 +1,275 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package machince.project.lassalle;
+
+/**
+ *
+ * @author master
+ */
+ import java.util.Scanner;    /** this code lets us capture the users input*/
+public class MachinceProjectLassalle {
+
+    /**
+     * @param args the command line arguments
+     * 
+     * 
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+   
+    float UinputIncome; /** functions as the input of user  by default 0*/
+    float SSS =0;/** shows the user how much they give to SSS */
+    float Philhealth , love; /** shows the user how much they give to Philhealth */
+    float UserIncome; /** shows the income after computation */
+    
+   System.out.println("Enter your income ");
+   Scanner scanner = new Scanner(System.in); /** functions as the way to get the keyboard */
+        
+    UinputIncome = scanner.nextFloat();     
+    
+        if(UinputIncome < 0) /*  Checks userinput if  negative**/
+          {
+              System.out.println("Invalid Input");
+             
+             }
+        
+        else if (UinputIncome > 0 &&UinputIncome <= 250000 )  /*  Checks userinput if it applies to this condition in the tran law**/
+            {
+                
+                UserIncome = UinputIncome;           
+                System.out.println("Your entered ammount"+ UinputIncome);
+                Philhealth = 0;
+                SSS = 0;
+                
+                
+                /** Phil health CHecker */
+
+                if (UinputIncome <= 10000)
+                {
+                   Philhealth = (float)137.50;
+                   UserIncome = UserIncome - Philhealth;  
+                }
+                else if (UinputIncome > 10000 && UinputIncome <=39999.99)
+                {
+                   Philhealth = (float)(UinputIncome * 0.0275)/2;
+                   UserIncome = UserIncome - Philhealth;  
+                }
+                 else if (UinputIncome >= 40000)
+                 {
+                  Philhealth = 550;
+                  UserIncome = UserIncome - Philhealth;
+                 }
+               
+                 /** 
+                 * 
+                 * SSS Contribution Checker based on income
+
+                 */
+                if (UinputIncome >= 1000 && UinputIncome <= 1249.99)
+                        {
+
+                            SSS = (float) 36.30;
+                            UserIncome = UserIncome - SSS;  
+                          }
+
+                else if (UinputIncome >= 1250 && UinputIncome <= 1749.99)
+                        {
+
+                            SSS = (float)54.50;
+                            UserIncome = UserIncome - SSS;   
+                          }
+                else if (UinputIncome >= 1750 && UinputIncome <= 2249.99)
+                        {
+
+                            SSS = (float)72.70;
+                            UserIncome = UserIncome - SSS;  
+                          }
+                else if (UinputIncome >= 2250 && UinputIncome <= 2749.99)
+                        {
+
+                            SSS =(float) 90.80;
+                            UserIncome = UserIncome - SSS;  
+                          }
+
+                else if (UinputIncome >= 2750 && UinputIncome <= 3249.99)
+                        {
+
+                            SSS = (float)109.00;
+                            UserIncome = UserIncome - SSS;  
+                          }
+
+                else if (UinputIncome >= 3250 && UinputIncome <= 3749.99)
+                        {
+
+                            SSS = (float)127.20;
+                            UserIncome = UserIncome - SSS;   
+                          }
+                else if (UinputIncome >= 3750 && UinputIncome <= 4249.99)
+                        {
+
+                            SSS = (float)145.30;
+                            UserIncome = UserIncome - SSS;  
+                          }
+
+                else if (UinputIncome >= 4250 && UinputIncome <= 4749.99)
+                        {
+
+                            SSS = (float)163.50;
+                            UserIncome = UserIncome - SSS;  
+                          }
+                else if (UinputIncome >= 4750 && UinputIncome <= 5249.99)
+                        {
+
+                            SSS = (float)181.70;
+                            UserIncome = UserIncome - SSS;  
+                          }
+
+                else if (UinputIncome >= 5250 && UinputIncome <= 5749.99)
+                        {
+
+                            SSS = (float)199.80;
+                            UserIncome = UserIncome - SSS;  
+                          }
+                else if (UinputIncome >= 5750 && UinputIncome <= 6249.99)
+                        {
+
+                            SSS = (float)218.00;
+                            UserIncome = UserIncome - SSS;  
+                          }
+                else if (UinputIncome >= 6250 && UinputIncome <= 6749.99)
+                        {
+
+                            SSS = (float)218.00;
+                            UserIncome = UserIncome - SSS;  
+                          }
+                else if (UinputIncome >= 6750 && UinputIncome <= 7249.99)
+                        {
+
+                            SSS = (float)254.30;
+                            UserIncome = UserIncome - SSS;  
+                          }
+                else if (UinputIncome >= 7250 && UinputIncome <= 7749.99)
+                        {
+
+                            SSS = (float)272.50;
+                            UserIncome = UserIncome - SSS;  
+                          }  
+                else if (UinputIncome >= 7750 && UinputIncome <= 8249.99)
+                        {
+
+                            SSS = (float)290.70;
+                            UserIncome = UserIncome - SSS;  
+                          }  
+
+                else if (UinputIncome >= 8250 && UinputIncome <= 8749.99)
+                        {
+
+                            SSS = (float)308.80;
+                            UserIncome = UserIncome - SSS;  
+                          }  
+                else if (UinputIncome >= 8750 && UinputIncome <= 9249.99)
+                        {
+
+                            SSS = (float)327.00;
+                            UserIncome = UserIncome - SSS;  
+                          }  
+                else if (UinputIncome >= 9250 && UinputIncome <= 9749.99)
+                        {
+
+                            SSS = (float)345.20;
+                            UserIncome = UserIncome - SSS;  
+                          }  
+                else if (UinputIncome >= 9750 && UinputIncome <= 10249.99)
+                        {
+
+                            SSS = (float)363.30;
+                            UserIncome = UserIncome - SSS;  
+                        }
+                else if (UinputIncome >= 10250 && UinputIncome <= 10749.99)
+                        {
+
+                            SSS = (float)381.50;
+                            UserIncome = UserIncome - SSS;  
+                        }      
+
+                else if (UinputIncome >= 10750 && UinputIncome <= 11249.99)
+                        {
+
+                            SSS = (float)399.70;
+                            UserIncome = UserIncome - SSS;  
+                        }              
+                else if (UinputIncome >= 11250 && UinputIncome <= 11749.99)
+                        {
+
+                            SSS = (float)417.80;
+                            UserIncome = UserIncome - SSS;  
+                        }             
+                else if (UinputIncome >= 11750 && UinputIncome <= 12249.99)
+                        {
+
+                            SSS = (float)436.00;
+                            UserIncome = UserIncome - SSS;  
+                        }  
+                else if (UinputIncome >= 12250 && UinputIncome <= 12749.99)
+                        {
+
+                            SSS = (float)454.20;
+                            UserIncome = UserIncome - SSS;  
+                        }    
+                else if (UinputIncome >= 12750 && UinputIncome <= 13249.99)
+                        {
+
+                            SSS = (float)472.30;
+                            UserIncome = UserIncome - SSS;  
+                        }        
+                else if (UinputIncome >= 13250 && UinputIncome <= 13749.99)
+                        {
+
+                            SSS = (float)490.50;
+                            UserIncome = UserIncome - SSS;  
+                        }     
+                else if (UinputIncome >= 13750 && UinputIncome <= 14249.99)
+                        {
+
+                            SSS = (float)508.70;
+                            UserIncome = UserIncome - SSS;  
+                        } 
+                else if (UinputIncome >= 14250 && UinputIncome <= 14749.99)
+                        {
+
+                            SSS = (float)526.80;
+                            UserIncome = UserIncome - SSS;  
+                        }    
+                else if (UinputIncome >= 14750 && UinputIncome <= 15249.99)
+                        {
+
+                            SSS = (float)545.00;
+                            UserIncome = UserIncome - SSS;  
+                        } 
+                else if (UinputIncome >= 15750 )
+                        {
+
+                            SSS = (float)581.30;
+                            UserIncome = UserIncome - SSS;  
+                        }       
+                /** Not Done */
+
+                System.out.println("Your Take Home Income "+ UserIncome);
+                System.out.println("Your SSS Payment "+ SSS);
+                System.out.println("Your PhilHealth Payment "+ Philhealth);
+                
+                
+            }
+        
+        else if ( UinputIncome == 0)/*  Checks userinput if zero**/
+            {
+                
+                System.out.println("You make no money sad"); /* Temporary**/
+            
+              }
+    }
+    
+}
