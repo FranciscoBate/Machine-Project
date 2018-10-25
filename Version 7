@@ -1,0 +1,438 @@
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package basicprog;
+
+import java.io.*;
+/**
+ *
+ * @author Administrator
+ */
+import java.util.Scanner;
+public class BasicProg {
+
+    /**
+     * @param args the command line arguments
+     */
+     
+
+   public static void main(String[] args) {
+       
+  float  c_Yearlyincome,YearlyDeductibles,Yearlyincome,MonthlyDeductibles ,SSS =0,GSIS =0 ,Philhealth,taxcomputation , love,Yearlytaxammount,Monthlytaxammount ,o_Monthlytaxammount,o_Yearlytaxammount,montlyIncome,c_montlyIncome,o_ycomp1,o_ycomp2,o_mcomp,o_mdectables,o_ydeductables;
+    int workstatus,status,dependents;
+     /** Variables Guide
+     * c_Yearlyincome act as  the constant for the yearly
+     * Yearlyincome is the one that can be modified
+     * c_montlyIncome act as the constant for the monthly income
+     * montlyIncome is the one that can be modified 
+     * YearlyDeductiblessis the  total of  Deductibles for the year
+     * MonthlyDeductibles is the  total of  Deductibles for the month
+     * taxcomputation
+     * SSS  Deductibles for SSS
+     * GSIS Deductibles for government worker
+     * Philhealth  Deductible for Philhealth
+     * love is the Deductible for pagibig
+     * Yearlytaxammount how much the user is paying on taxes for the year currently
+     * Monthlytaxammount how much the user is  paying on taxes for the month currently
+     * 
+     */ 
+      // only declared values as zero here since netbeans requires it
+       workstatus= 0;
+        status= 0;
+        dependents =0;
+        Yearlyincome= 0;
+        MonthlyDeductibles= 0;
+        YearlyDeductibles= 0; 
+        c_Yearlyincome = 0;
+        c_montlyIncome =0;
+        Philhealth = 0;
+        Monthlytaxammount = 0;
+        SSS = 0;
+        Yearlytaxammount = 0;
+        taxcomputation =0;
+        montlyIncome =0;
+        o_Yearlytaxammount= 0;
+        o_ydeductables =0;
+        love =100;
+      // this line of code gets the user input and checks if it is a vaild input
+        System.out.println("Enter your monthly Income ");
+        BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+                  try{
+                  c_montlyIncome = Float.parseFloat(br.readLine()) ; 
+                  montlyIncome =c_montlyIncome;
+                  c_Yearlyincome = c_montlyIncome *12;
+                  Yearlyincome = c_Yearlyincome;
+                  
+                  }
+                  catch(Exception e){
+                      System.out.println("Error Invalid Value ");
+                      c_montlyIncome = 1;
+                   
+                  }
+                  
+      System.out.println("Please enter if you are goverment(1) or private (2) ");
+                  try{
+                           workstatus = Integer.parseInt(br.readLine());
+                  }
+                  catch(Exception e){
+                      System.out.println("Error Invalid Value ");
+                      c_montlyIncome = -1;
+                   
+                  }          
+       System.out.println("Please enter the number of dependents "); 
+                 try{
+                           dependents = Integer.parseInt(br.readLine());
+                  }
+                  catch(Exception e){
+                      System.out.println("Error Invalid Value ");
+                      c_montlyIncome = -1;
+                   
+                  }   
+   
+       
+     // checks if the user inputed a negative or less than zero value
+     
+            if (c_montlyIncome > 0)
+            {
+                         /** Phil health CHecker */
+                    if (c_montlyIncome <= 10000)
+                            Philhealth = 137.50f;
+                       
+                    else if (c_montlyIncome > 10000 && c_montlyIncome <=39999.99)
+                        Philhealth = (float)(c_montlyIncome * 0.0275)/2;
+            
+                   else if (c_montlyIncome >= 40000)
+                        Philhealth = 550f;
+
+                   if (c_montlyIncome >= 1000 && c_montlyIncome <= 1249.99)
+                                 SSS =  36.30f;
+
+                    else if (c_montlyIncome >= 1250 && c_montlyIncome <= 1749.99)
+                                       SSS = 54.50f;
+
+                    else if (c_montlyIncome >= 1750 && c_montlyIncome <= 2249.99)
+                                       SSS = 72.70f;
+
+                    else if (c_montlyIncome >= 2250 && c_montlyIncome <= 2749.99)
+                                       SSS = 90.80f;
+
+                    else if (c_montlyIncome >= 2750 && c_montlyIncome <= 3249.99)
+                                       SSS = 109.00f;
+
+                    else if (c_montlyIncome >= 3250 && c_montlyIncome <= 3749.99)
+                                       SSS = 127.20f;
+
+                    else if (c_montlyIncome >= 3750 && c_montlyIncome <= 4249.99)
+                                       SSS = 145.30f;
+
+                    else if (c_montlyIncome >= 4250 && c_montlyIncome <= 4749.99)
+                                       SSS = 163.50f;
+
+                    else if (c_montlyIncome >= 4750 && c_montlyIncome <= 5249.99)
+                                       SSS = 181.70f;
+
+                    else if (c_montlyIncome >= 5250 && c_montlyIncome <= 5749.99)
+                                        SSS = 199.80f;
+
+                    else if (c_montlyIncome >= 5750 && c_montlyIncome <= 6249.99)
+                                       SSS = 218.00f;
+
+                    else if (c_montlyIncome >= 6250 && c_montlyIncome <= 6749.99)
+                                       SSS = 218.00f;
+
+                    else if (c_montlyIncome >= 6750 && c_montlyIncome <= 7249.99)
+                                       SSS = 254.30f;
+
+                    else if (c_montlyIncome >= 7250 && c_montlyIncome <= 7749.99)
+                                       SSS = 272.50f;
+
+                    else if (c_montlyIncome >= 7750 && c_montlyIncome <= 8249.99)
+                                       SSS = 290.70f;
+
+                    else if (c_montlyIncome >= 8250 && c_montlyIncome <= 8749.99)
+                                       SSS = 308.80f;
+
+                    else if (c_montlyIncome >= 8750 && c_montlyIncome <= 9249.99)
+                                       SSS = 327.00f;
+
+                    else if (c_montlyIncome >= 9250 && c_montlyIncome <= 9749.99)
+                                       SSS = 345.20f;
+
+                    else if (c_montlyIncome >= 9750 && c_montlyIncome <= 10249.99)
+                                       SSS = 363.30f;
+
+                    else if (c_montlyIncome >= 10250 && c_montlyIncome <= 10749.99)
+                                       SSS = 381.50f;
+
+                    else if (c_montlyIncome >= 10750 && c_montlyIncome <= 11249.99)
+                                       SSS = 399.70f;
+
+                    else if (c_montlyIncome >= 11250 && c_montlyIncome <= 11749.99)
+                                       SSS = 417.80f;  
+
+                    else if (c_montlyIncome >= 11750 && c_montlyIncome <= 12249.99)
+                                       SSS = 436.00f;
+
+                    else if (c_montlyIncome >= 12250 && c_montlyIncome <= 12749.99)
+                                       SSS = 454.20f;
+
+                    else if (c_montlyIncome >= 12750 && c_montlyIncome <= 13249.99)
+                                       SSS = 472.30f;
+
+                    else if (c_montlyIncome >= 13250 && c_montlyIncome <= 13749.99)
+                                       SSS = 490.50f;
+
+                    else if (c_montlyIncome >= 13750 && c_montlyIncome <= 14249.99)
+                                       SSS = 508.70f;
+
+                    else if (c_montlyIncome >= 14250 && c_montlyIncome <= 14749.99)
+                                       SSS = 526.80f;
+
+                    else if (c_montlyIncome >= 14750 && c_montlyIncome <= 15249.99)
+                                       SSS = 545.00f;
+
+                    else if (c_montlyIncome >= 15250 && c_montlyIncome <= 15749.99)
+                                       SSS = 563.20f;
+
+                     else if (c_montlyIncome >= 15750 )
+                                       SSS = 581.30f;
+                   
+                   
+             // Computes the new tax bracket code
+                if (c_Yearlyincome > 0 &&c_Yearlyincome <= 250000 )  
+                        {
+                          Monthlytaxammount = 0;
+                          Yearlytaxammount = 0;
+                           montlyIncome = montlyIncome - love;
+                           montlyIncome = montlyIncome - SSS;
+                           //Philhealth = Math.round(Philhealth *100)/100; 
+                           montlyIncome = montlyIncome - Philhealth;
+                           //montlyIncome = Math.round(montlyIncome *100)/100;
+                           MonthlyDeductibles = SSS +Philhealth + love;
+                           YearlyDeductibles = MonthlyDeductibles *12 ;
+                           Yearlyincome = Yearlyincome - YearlyDeductibles;
+
+                        }
+               else if ( c_Yearlyincome  >250000.00 && c_Yearlyincome <= 400000)
+                    {
+
+                            montlyIncome = (float)montlyIncome - SSS - love - Philhealth;
+                            taxcomputation = (float)montlyIncome - (250000/12);
+
+                            if (taxcomputation > 0)
+                            Monthlytaxammount = taxcomputation * 0.20f;
+
+                            else
+                            Monthlytaxammount = 0;
+
+                            montlyIncome = (float)montlyIncome - Monthlytaxammount;
+                            Yearlyincome = montlyIncome *12;
+                            MonthlyDeductibles = SSS +Philhealth + love;
+                            YearlyDeductibles = MonthlyDeductibles *12 ;
+                            //YearlyDeductibles = Math.round(YearlyDeductibles *100)/100;
+                           Yearlytaxammount = Monthlytaxammount * 12;
+
+                        }
+               else if ( c_Yearlyincome  >400000.00 && c_Yearlyincome <= 800000)
+                        {
+                          montlyIncome = (float)montlyIncome - SSS - love - Philhealth;
+                          taxcomputation = (float)montlyIncome - (400000/12);
+
+                          if (taxcomputation > 0)
+                            Monthlytaxammount = 30000/12+(taxcomputation * 0.25f);
+
+                          else
+                            Monthlytaxammount = 30000/12;
+
+
+                            montlyIncome = (float)montlyIncome - Monthlytaxammount;
+                            Yearlyincome = montlyIncome *12;
+                            MonthlyDeductibles = SSS +Philhealth + love;
+                            YearlyDeductibles = MonthlyDeductibles *12 ;
+                            Yearlytaxammount = Monthlytaxammount * 12;
+
+
+                        }
+               else if ( c_Yearlyincome  >800000.00 && c_Yearlyincome <= 2000000)
+                        {
+                            montlyIncome = (float)montlyIncome - SSS - love - Philhealth;
+                            taxcomputation = (float)montlyIncome - (800000/12);
+
+                            if (taxcomputation > 0)
+                            Monthlytaxammount = 130000/12+(taxcomputation * 0.30f);
+
+                            else
+                            Monthlytaxammount = 130000/12;
+
+
+                            montlyIncome = (float)montlyIncome - Monthlytaxammount;
+                            Yearlyincome = montlyIncome *12;
+                            MonthlyDeductibles = SSS +Philhealth + love;
+                            YearlyDeductibles = MonthlyDeductibles *12 ;
+                            Yearlytaxammount = Monthlytaxammount * 12;    
+
+
+                        }
+                else if ( c_Yearlyincome  >2000000.00 && c_Yearlyincome <= 8000000)
+                        {
+                          montlyIncome = (float)montlyIncome - SSS - love - Philhealth;
+                          taxcomputation = (float)montlyIncome - (2000000/12);
+
+                            if (taxcomputation > 0)
+                            Monthlytaxammount = 490000+(taxcomputation * 0.32f);
+
+                            else
+                            Monthlytaxammount = 490000;
+
+                          montlyIncome = (float)montlyIncome - Monthlytaxammount;
+                          Yearlyincome = montlyIncome *12;
+                          MonthlyDeductibles = SSS +Philhealth + love;
+                          YearlyDeductibles = MonthlyDeductibles *12 ;
+                          Yearlytaxammount = Monthlytaxammount * 12;  
+
+                        }
+                else if ( c_Yearlyincome  >8000000)
+                        {
+                             montlyIncome = (float)montlyIncome - SSS - love - Philhealth;
+                          taxcomputation = (float)montlyIncome - (8000000/12);
+
+                            if (taxcomputation > 0)
+                            Monthlytaxammount = 2410000+(taxcomputation * 0.35f);
+
+                            else
+                            Monthlytaxammount = 2410000;
+
+                          montlyIncome = (float)montlyIncome - Monthlytaxammount;
+                          Yearlyincome = montlyIncome *12;
+                          MonthlyDeductibles = SSS +Philhealth + love;
+                          YearlyDeductibles = MonthlyDeductibles *12 ;
+                          Yearlytaxammount = Monthlytaxammount * 12;  
+
+                        }
+                   /*validation for tax bracket 2017*/
+                   if (c_Yearlyincome > 0 && c_Yearlyincome <= 10000)
+                   {
+                       o_ycomp1 = c_Yearlyincome* 0.05f;
+                       o_mcomp = o_ycomp1/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = (float)SSS + love + Philhealth + o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                   } 
+                   else if (c_Yearlyincome > 10000 && c_Yearlyincome <= 30000)
+                   {
+                       o_ycomp1 = c_Yearlyincome - 500 - 10000; 
+                       o_ycomp2 = o_ycomp1 * 0.10f + 500;
+                       o_mcomp = o_ycomp1/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                   }   
+                   else if (c_Yearlyincome > 30000 && c_Yearlyincome <= 70000)
+                   {
+                       o_ycomp1 = c_Yearlyincome - 2500 - 30000; 
+                       o_ycomp2 = o_ycomp1 * 0.15f + 2500;
+                       o_mcomp = o_ycomp2/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = (float)SSS + love + Philhealth + o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                   }   
+                   else if (c_Yearlyincome > 70000 && c_Yearlyincome <= 140000)
+                   {
+                       o_ycomp1 = c_Yearlyincome - 8500 - 70000; 
+                       o_ycomp2 = o_ycomp1 * 0.20f + 8500;
+                       o_mcomp = o_ycomp2/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = (float)SSS + love + Philhealth + o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                   }   
+                   else if (c_Yearlyincome > 140000 && c_Yearlyincome <= 250000)
+                   {
+                       o_ycomp1 = c_Yearlyincome - 22500 - 140000; 
+                       o_ycomp2 = o_ycomp1 * 0.25f + 22500;
+                       o_mcomp = o_ycomp2/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = (float)SSS + love + Philhealth + o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                   }   
+                   else if (c_Yearlyincome > 250000 && c_Yearlyincome <= 500000)
+                   {
+                       o_ycomp1 = c_Yearlyincome - 50000 - 250000; 
+                       o_ycomp2 = o_ycomp1 * 0.30f + 50000;
+                       o_mcomp = o_ycomp2/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = (float)SSS + love + Philhealth + o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                   } 
+                   else if (c_Yearlyincome >= 500000)
+                   {
+                       o_ycomp1 = c_Yearlyincome - 1250000 - 500000; 
+                       o_ycomp2 = o_ycomp1 * 0.32f + 1250000;
+                       o_mcomp = o_ycomp2/12;
+
+                       o_mdectables = (float)c_montlyIncome - SSS - love - Philhealth - o_mcomp;
+                       o_ydeductables = o_mdectables * 12;
+
+                       o_Monthlytaxammount = (float)SSS + love + Philhealth + o_mcomp;
+                       o_Yearlytaxammount = o_Monthlytaxammount * 12;
+                    } 
+
+                    System.out.println("Your Take Home Income Per Month  "+ montlyIncome);
+                    System.out.println("Your Take Home Income Per Year  "+ Yearlyincome);
+                    System.out.println("Your SSS Payment "+ SSS);
+                    System.out.println("Your PhilHealth Payment "+ Philhealth);  
+                    System.out.println("Your Pag-ibig Payment "+ love);
+                    System.out.println("Your total deductibels per month  "+ MonthlyDeductibles);
+                    System.out.println("Your total deductibels per year "+ YearlyDeductibles);
+                    System.out.println("Your monthly tax payments "+ Monthlytaxammount); 
+                    System.out.println("Your yearly tax payments "+ Yearlytaxammount); 
+                    
+ 
+
+            }
+             else if(c_montlyIncome < 0 && c_montlyIncome != -1) 
+                  System.out.println("Error Invalid Value");
+                  
+            else if ( c_montlyIncome == 0)
+                    System.out.println("Error Invalid Value"); 
+            
+            else if( c_montlyIncome == -1)
+              System.out.println("  ");
+    }
+   
+  public static void newtax( float a, float b)
+  {
+  }
+  public static void oldtax( float a, float b)
+  {
+  }
+  public static float SSSchecker(float a)
+  {
+      float SSS;
+      SSS=0;
+   return  SSS;
+  }
+   }
+   
+
+   
+    
